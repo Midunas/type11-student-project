@@ -147,8 +147,107 @@ requiredInputs.forEach(input => {
         inputError.classList.add('input-error-message');
 
         input.after(inputError);
+        return;
     }
-})
+if (input.name === 'name' && input.value.length < 3) {
+    validForm = false;
+    let alertText = 'Ne visi laukeliai užpildyti teisingai';
+    alertMessage(alertText, 'error-alert');
+    
+    input.classList.add('input-error')
+
+    let inputError = document.createElement('span');
+    inputError.textContent= 'Vardas privalo buti bent 3 simboliu ilgumo';
+    inputError.classList.add('input-error-message');
+
+    input.after(inputError);
+    return;
+}
+
+if (input.name === 'surname' && input.value.length < 3) {
+    validForm = false;
+    let alertText = 'Ne visi laukeliai užpildyti teisingai';
+    alertMessage(alertText, 'error-alert');
+    
+    input.classList.add('input-error')
+
+    let inputError = document.createElement('span');
+    inputError.textContent= 'Vardas privalo buti bent 3 simboliu ilgumo';
+    inputError.classList.add('input-error-message');
+
+    input.after(inputError);
+    return;
+}
+
+if (input.name === 'age') {
+    if (input.value < 0){
+    validForm = false;
+    let alertText = 'Ne visi laukeliai užpildyti teisingai';
+    alertMessage(alertText, 'error-alert');
+    
+    input.classList.add('input-error')
+
+    let inputError = document.createElement('span');
+    inputError.textContent= 'ivestas amzius per mazas';
+    inputError.classList.add('input-error-message');
+
+    input.after(inputError);
+    return;
+}
+}
+
+if (input.name === 'age') {
+    if (input.value > 120){
+    validForm = false;
+    let alertText = 'Ne visi laukeliai užpildyti teisingai';
+    alertMessage(alertText, 'error-alert');
+    
+    input.classList.add('input-error')
+
+    let inputError = document.createElement('span');
+    inputError.textContent= 'ivestas amzius per didelis';
+    inputError.classList.add('input-error-message');
+
+    input.after(inputError);
+    return;
+}
+}
+
+if (input.name === 'phone') {
+    if (input.length < 9 || input.length > 12) {
+    validForm = false;
+    let alertText = 'Ne visi laukeliai užpildyti teisingai';
+    alertMessage(alertText, 'error-alert');
+    
+    input.classList.add('input-error')
+
+    let inputError = document.createElement('span');
+    inputError.textContent= 'Netinkamas telefono numeris';
+    inputError.classList.add('input-error-message');
+
+    input.after(inputError);
+    return;
+}
+}
+
+if (input.name === 'email') {
+    if (input.value.length < 5 || !input.value.includes('@')) {
+    validForm = false;
+    let alertText = 'Ne visi laukeliai užpildyti teisingai';
+    alertMessage(alertText, 'error-alert');
+    
+    input.classList.add('input-error')
+
+    let inputError = document.createElement('span');
+    inputError.textContent= 'Netinkamas elektroninis pastas';
+    inputError.classList.add('input-error-message');
+
+    input.after(inputError);
+    return;
+}
+}
+
+});
 
 if(!validForm) {
     return;
