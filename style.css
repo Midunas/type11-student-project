@@ -1,4 +1,77 @@
+/* body{
+    line-height: 1.8;
+    color: rgb(0, 0, 0);
+    background-image: url(./body-bg.jpg);
+    background-repeat: repeat;
+    background-size: 100%;
+    background-position: center center;
+    font-weight: 400;
+    margin: 0px;
 
+} */
+/* .form-wrapper{
+    margin-top: 300px;
+    margin-bottom: 100px;
+    width: 586px;
+    background: #fff;
+    margin-left: 165px;
+    border-radius: 10px;
+}
+.student-item{
+    width: 586px;
+    background: #fff;
+    margin-left: 165px;
+    border-radius: 10px;
+    padding: 30px 30px 30px 30px;
+    display: block;
+    margin-top: 0em;
+    margin-bottom: 100px;
+}
+#student-name, #student-surname, #student-age, #student-phone, #student-email, p{
+    width: 100%;
+    display: block;
+    border: none;
+    border-bottom: 2px solid #ebebeb;
+    padding: 5px 0;
+    color: #222;
+    margin-bottom: 31px;
+}
+.student-form {
+    padding: 50px 60px 70px 60px;
+    display: block;
+    margin-top: 0em;
+}
+h2 {
+    margin-bottom: 30px;
+}
+#submit {
+    background: #4966b1;
+    color: #fff;
+    padding: 16px 17px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0px 1px 15px 0px rgb(73 102 177 / 70%);
+}
+.delete-student{
+    background: #b14949;
+    color: #fff;
+    padding: 10px 17px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 0px 1px 15px 0px rgb(73 102 177 / 70%);
+}
+button{
+    background: #4966b1;
+    color: #fff;
+    padding: 10px 17px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 0px 1px 15px 0px rgb(73 102 177 / 70%);
+    margin-right: 10px;
+} */
 .input-error-message {
     color: red;
 }
@@ -7,4 +80,4 @@
 }
 .error-alert {
     color: red;
-}
+} 

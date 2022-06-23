@@ -5,149 +5,159 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Success FORMOS</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+      integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="style.css" />
     <style>
       .form-control {
         padding-bottom: 15px;
       }
     </style>
-    <link rel="stylesheet" href="style.css" />
   </head>
-  <script src="main.js" defer></script>
+  <!-- <script src="main.js" defer></script> -->
+  <script src="naujas.js" defer></script>
   <body>
-    <form novalidate>
-      <div class="form-control">
-        <label for="student-name">Name:</label>
-        <input
-          type="text"
-          name="name"
-          id="student-name"
-          placeholder="Enter your name"
-          value="Vardas"
-          class="required"
-        />
-      </div>
-      <div class="form-control">
-        <label for="student-surname">Surname:</label>
-        <input
-          type="text"
-          name="surname"
-          id="student-surname"
-          placeholder="Enter your surname"
-          value="Pavardė"
-          class="required"
-        />
-      </div>
-      <div class="form-control">
-        <label for="student-age">Age:</label>
-        <input
-          type="number"
-          name="age"
-          id="student-age"
-          placeholder="Age"
-          value="30"
-          class="required"
-        />
-      </div>
-      <div class="form-control">
-        <label for="student-phone">Phone:</label>
-        <input
-          type="tel"
-          name="phone"
-          id="student-phone"
-          placeholder="Phone number"
-          value="+3706545745"
-          class="required"
-        />
-      </div>
-      <div class="form-control">
-        <label for="student-email">Email:</label>
-        <input
-          type="email"
-          name="email"
-          id="student-email"
-          placeholder="Enter your email"
-          value="studentas@email.com"
-          class="required"
-        />
-      </div>
-      <div class="form-control">
-        <label for="it-knowledge">IT knowledge:</label>
-        <input
-          type="range"
-          name="it-knowledge"
-          id="student-it-knowledge"
-          min="1"
-          max="10"
-          value="5"
-          step="1"
-        />
-        <output id="it-knowledge-output">5</output>
-      </div>
-      <fieldset>
-        <legend>Group name:</legend>
-
+    <div class="form-wrapper">
+      <form class="student-form" novalidate>
+        <h2>Apply now!</h2>
         <div class="form-control">
+          <!-- <label for="student-name">Name:</label> -->
           <input
-            type="radio"
-            name="group"
-            id="student-group-1"
-            value="type 1"
+            type="text"
+            name="name"
+            id="student-name"
+            placeholder="Enter your name"
+            value="Vardas"
+            class="required"
+          />
+        </div>
+        <div class="form-control">
+          <!-- <label for="student-surname">Surname:</label> -->
+          <input
+            type="text"
+            name="surname"
+            id="student-surname"
+            placeholder="Enter your surname"
+            value="Pavardė"
+            class="required"
+          />
+        </div>
+        <div class="form-control">
+          <!-- <label for="student-age">Age:</label> -->
+          <input
+            type="number"
+            name="age"
+            id="student-age"
+            placeholder="Age"
+            value="30"
+            class="required"
+          />
+        </div>
+        <div class="form-control">
+          <!-- <label for="student-phone">Phone:</label> -->
+          <input
+            type="tel"
+            name="phone"
+            id="student-phone"
+            placeholder="Phone number"
+            value="+3706545745"
+            class="required"
+          />
+        </div>
+        <div class="form-control">
+          <!-- <label for="student-email">Email:</label> -->
+          <input
+            type="email"
+            name="email"
+            id="student-email"
+            placeholder="Enter your email"
+            value="studentas@email.com"
+            class="required"
+          />
+        </div>
+        <div class="form-control">
+          <label for="it-knowledge">IT knowledge:</label>
+          <input
+            type="range"
+            name="it-knowledge"
+            id="student-it-knowledge"
+            min="1"
+            max="10"
+            value="5"
+            step="1"
+          />
+          <output id="it-knowledge-output">5</output>
+        </div>
+        <fieldset>
+          <legend>Group name:</legend>
+
+          <div class="form-control">
+            <input
+              type="radio"
+              name="group"
+              id="student-group-1"
+              value="type 1"
+              checked
+            />
+            <label for="student-group-1">TYPE ONE</label>
+
+            <input
+              type="radio"
+              name="group"
+              id="student-group-2"
+              value="type 2"
+            />
+            <label for="student-group-2">TYPE TWO</label>
+
+            <input
+              type="radio"
+              name="group"
+              id="student-group-3"
+              value="type 3"
+            />
+            <label for="student-group-3">TYPE THREE</label>
+          </div>
+        </fieldset>
+        <br />
+
+        <fieldset>
+          <legend>Interests:</legend>
+
+          <input
+            type="checkbox"
+            name="codeLang"
+            id="JavaScript"
+            value="JavaScript"
             checked
           />
-          <label for="student-group-1">TYPE ONE</label>
+          <label for="JavaScript">JavaScript</label>
 
           <input
-            type="radio"
-            name="group"
-            id="student-group-2"
-            value="type 2"
+            type="checkbox"
+            name="codeLang"
+            id="TypeScript"
+            value="TypeScript"
           />
-          <label for="student-group-2">TYPE TWO</label>
+          <label for="TypeScript">TypeScript</label>
 
-          <input
-            type="radio"
-            name="group"
-            id="student-group-3"
-            value="type 3"
-          />
-          <label for="student-group-3">TYPE THREE</label>
-        </div>
-      </fieldset>
-      <br />
+          <input type="checkbox" name="codeLang" id="PhP" value="PhP" checked />
+          <label for="PhP">PhP</label>
 
-      <fieldset>
-        <legend>Interests:</legend>
+          <input type="checkbox" name="codeLang" id="C++" value="C++" />
+          <label for="C++">C++</label>
+        </fieldset>
 
-        <input
-          type="checkbox"
-          name="codeLang"
-          id="JavaScript"
-          value="JavaScript"
-          checked
-        />
-        <label for="JavaScript">JavaScript</label>
+        <br />
+        <br />
 
-        <input
-          type="checkbox"
-          name="codeLang"
-          id="TypeScript"
-          value="TypeScript"
-        />
-        <label for="TypeScript">TypeScript</label>
-
-        <input type="checkbox" name="codeLang" id="PhP" value="PhP" checked />
-        <label for="PhP">PhP</label>
-
-        <input type="checkbox" name="codeLang" id="C++" value="C++" />
-        <label for="C++">C++</label>
-      </fieldset>
-
-      <br />
-      <br />
-
-      <input type="submit" />
-    </form>
-
+        <input type="submit" id="submit" value="Sign up" />
+      </form>
+    </div>
     <span id="alert"></span>
     <div id="students-list"></div>
   </body>
