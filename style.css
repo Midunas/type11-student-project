@@ -8,8 +8,8 @@
     font-weight: 400;
     margin: 0px;
 
-}
-.form-wrapper{
+} */
+/* .form-wrapper{
     margin-top: 300px;
     margin-bottom: 100px;
     width: 586px;
@@ -71,7 +71,7 @@ button{
     cursor: pointer;
     box-shadow: 0px 1px 15px 0px rgb(73 102 177 / 70%);
     margin-right: 10px;
-}
+} */
 .input-error-message {
     color: red;
 }
@@ -80,4 +80,4 @@ button{
 }
 .error-alert {
     color: red;
-} */
+} 

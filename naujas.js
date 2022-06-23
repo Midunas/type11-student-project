@@ -445,65 +445,103 @@ searchForm.addEventListener('submit', (event) => {
     let studentAge = student.querySelector('.student-age').textContent.toLowerCase();
     let studentItKnowledge = student.querySelector('.student-it-knowledge').textContent.toLowerCase();
     let studentGroup = student.querySelector('.student-group').textContent.toLowerCase();
-    console.log(studentGroup)
-    console.log(studentItKnowledge)
+  
+    console.log(studentGroup);
+    console.log(studentItKnowledge);
     console.log(studentName);
     console.log(searchInput);
 
-    // // 5.3. Patikrinti ar varde arba pavardėje yra ieškoma frazė.
-    // if (studentName.includes(searchInput) || studentSurname.includes(searchInput)) {
-    //   // 5.3.2. Jeigu yra, tai reikia parodyti studento elementą (display: block).
-    //   student.style.display = 'block';
-    // } else {
-    //   // 5.3.1. Jeigu nėra, tai reikia paslėpti studento elementą (display: none).
-    //   student.style.display = 'none';
-    // }
-    // //pasirenku option elementa 
-
     let optionElement = event.target.elements.select.value;
-    console.log(optionElement)
+    console.log(optionElement);
 
-    // Sugalvok funkcija.. 
-    
-    if (optionElement.includes('Name')) {
+
+    switch(optionElement){
+      case 'Name':
+
         if (studentName.includes(searchInput)) {
             student.style.display = 'block';
         } else {
             student.style.display = 'none';
         }
-    }
 
-    if (optionElement.includes('Surname')) {
+        break;
+      case 'Surname':
+        
         if (studentSurname.includes(searchInput)) {
-            student.style.display = 'block';
-        } else {
-            student.style.display = 'none';
-        }
-    }
+          student.style.display = 'block';
+      } else {
+          student.style.display = 'none';
+      }
 
-    if (optionElement.includes('Age')) {
-        if (studentAge.includes(searchInput)) {
-            student.style.display = 'block';
-        } else {
-            student.style.display = 'none';
-        }
-    }
+        break;
+      case 'Age':
 
-    if (optionElement.includes('It knowledge')) {
-        if (studentItKnowledge.includes(searchInput)) {
-            student.style.display = 'block';
-        } else {
-            student.style.display = 'none';
-        }
-    }
+        if (studentAge === searchInput) {
+          student.style.display = 'block';
+      } else {
+          student.style.display = 'none';
+      }
+        break;
+      case 'It-knowledge':
 
-    if (optionElement.includes('Group')) {
+        if (studentItKnowledge === searchInput) {
+          student.style.display = 'block';
+      } else {
+          student.style.display = 'none';
+      }
+        break;
+      case 'Group':
+  
         if (studentGroup.includes(searchInput)) {
-            student.style.display = 'block';
-        } else {
-            student.style.display = 'none';
-        }
+          student.style.display = 'block';
+      } else {
+          student.style.display = 'none';
+      }
+        break;
+      default:
+        console.error('netinkamas');
     }
+    // Sugalvok funkcija.. Cia su ifais. 
+    
+    // if (optionElement.includes('Name')) {
+    //     if (studentName.includes(searchInput)) {
+    //         student.style.display = 'block';
+    //     } else {
+    //         student.style.display = 'none';
+    //     }
+    // }
+
+    // if (optionElement.includes('Surname')) {
+    //     if (studentSurname.includes(searchInput)) {
+    //         student.style.display = 'block';
+    //     } else {
+    //         student.style.display = 'none';
+    //     }
+    // }
+
+    // if (optionElement.includes('Age')) {
+    //     if (studentAge.includes(searchInput)) {
+    //         student.style.display = 'block';
+    //     } else {
+    //         student.style.display = 'none';
+    //     }
+    // }
+
+    // if (optionElement.includes('It-knowledge')) {
+    //     if (studentItKnowledge.includes(searchInput)) {
+    //         student.style.display = 'block';
+    //     } else {
+    //         student.style.display = 'none';
+    //     }
+    // }
+
+    // if (optionElement.includes('Group')) {
+    //     if (studentGroup.includes(searchInput)) {
+    //         student.style.display = 'block';
+    //     } else {
+    //         student.style.display = 'none';
+    //     }
+    // }
 
   });
 });
