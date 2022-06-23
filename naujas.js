@@ -143,7 +143,8 @@ function renderInitialData(students) {
   
       studentForm.querySelector('[type="submit"]').value = 'Save Changes';
       editedStudent = studentItem;
-  
+      itKnowledgeOutputReset ();
+
     });
 
     studentItem.append(nameElement, surnameElement, ageElement, phoneElement, emailElement, itKnowledgeElement, groupElement, interestWrapperElement, privateInfoButton, deleteStudentButton, editStudentButton);
@@ -165,14 +166,19 @@ function renderInitialData(students) {
 
 renderInitialData(INITIAL_STUDENT_DATA);
 
+function itKnowledgeOutputReset () {
+
 const itKnowledgeInputElement = document.querySelector('#student-it-knowledge');
 const itKnowledgeOutputElement = document.querySelector('#it-knowledge-output');
 
+itKnowledgeOutputElement.textContent = itKnowledgeInputElement.value;
 itKnowledgeInputElement.addEventListener('input', (event) => {
   // console.log(itKnowledgeInputElement.value)
   // console.log(event.target.value);
   itKnowledgeOutputElement.textContent = event.target.value;
 });
+}
+itKnowledgeOutputReset ();
 
 studentForm.addEventListener('submit', (event) => {
   event.preventDefault();
@@ -344,9 +350,10 @@ studentForm.addEventListener('submit', (event) => {
     studentForm.elements.phone.value = studentPhone;
     studentForm.elements.email.value = studentEmail;
     studentForm.elements.group.value = studentGroup;
-    document.querySelector('#student-it-knowledge').value = studentItKnowledge;
+    // document.querySelector('#student-it-knowledge').value = studentItKnowledge;
     studentForm.elements['it-knowledge'].value = studentItKnowledge;
 
+    
     studentForm.elements.interest.forEach(formInterest => {
       formInterest.checked = false;
       interests.forEach(studentInterest => {
@@ -354,6 +361,7 @@ studentForm.addEventListener('submit', (event) => {
           formInterest.checked = true;
         }
       });
+      
     });
 
     // 4. Pakeisti formos submit mygtuko tekstą.
@@ -362,6 +370,7 @@ studentForm.addEventListener('submit', (event) => {
     // 5. Išsaugoti studento HTML elementą kintamąjame.
     editedStudent = studentItem;
 
+    itKnowledgeOutputReset ();
   });
 
   studentItem.append(nameElement, surnameElement, ageElement, phoneElement, emailElement, itKnowledgeElement, groupElement, interestWrapperElement, privateInfoButton, deleteStudentButton, editStudentButton);
@@ -395,6 +404,8 @@ studentForm.addEventListener('submit', (event) => {
 
   // studentForm.reset();
   event.target.reset();
+  itKnowledgeOutputReset ();
+
 });
 
 function alertMessage(text, elementClass = '') {
