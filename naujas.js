@@ -1,7 +1,5 @@
 const studentForm = document.querySelector('form#student-form');
 
-
-// 1. Selektinti paieškos forma javascript'e ir priskirti ją kintamąjam.
 const searchForm = document.querySelector('form#search-form');
 let editedStudent = null;
 
@@ -112,6 +110,7 @@ function renderStudent (studentData){
     });
 
     let deleteStudentButton = document.createElement('button');
+    deleteStudentButton.classList.add('delete-student')
     deleteStudentButton.textContent = 'Remove student';
 
     deleteStudentButton.addEventListener('click', () => {
@@ -127,6 +126,7 @@ function renderStudent (studentData){
       studentForm.elements.name.value = studentName;
       studentForm.elements.surname.value = studentSurname;
       studentForm.elements.age.value = studentAge;
+
       studentForm.elements.phone.value = studentPhone;
       studentForm.elements.email.value = studentEmail;
       studentForm.elements.group.value = studentGroup;
@@ -181,8 +181,7 @@ const itKnowledgeOutputElement = document.querySelector('#it-knowledge-output');
 
 itKnowledgeOutputElement.textContent = itKnowledgeInputElement.value;
 itKnowledgeInputElement.addEventListener('input', (event) => {
-  // console.log(itKnowledgeInputElement.value)
-  // console.log(event.target.value);
+
   itKnowledgeOutputElement.textContent = event.target.value;
 });
 }
@@ -210,7 +209,8 @@ studentForm.addEventListener('submit', (event) => {
     email: event.target.elements.email.value,
     itKnowledge: event.target.elements['it-knowledge'].value,
     group: event.target.elements.group.value,
-    interests: document.querySelectorAll('input[name="interest"]:checked'),
+    // interests: document.querySelectorAll('input[name="interest"]:checked'),
+    interests: interestValues,
   };
 
 renderStudent(studentFormData);
@@ -356,6 +356,8 @@ renderStudent(studentFormData);
    event.target.reset();
    itKnowledgeOutputReset ();
 
+   //localStorage.setItem('form-info', '');
+   localStorage.removeItem('form-info');
 });
 
 function alertMessage(text, elementClass = '') {
@@ -467,10 +469,6 @@ searchForm.addEventListener('submit', (event) => {
     let studentItKnowledge = student.querySelector('.student-it-knowledge').textContent.toLowerCase();
     let studentGroup = student.querySelector('.student-group').textContent.toLowerCase();
   
-    console.log(studentGroup);
-    console.log(studentItKnowledge);
-    console.log(studentName);
-    console.log(searchInput);
 
     let optionElement = event.target.elements.select.value;
     console.log(optionElement);
@@ -522,47 +520,96 @@ searchForm.addEventListener('submit', (event) => {
       default:
         console.error('netinkamas');
     }
-    // Sugalvok funkcija.. Cia su ifais. 
-    
-    // if (optionElement.includes('Name')) {
-    //     if (studentName.includes(searchInput)) {
-    //         student.style.display = 'block';
-    //     } else {
-    //         student.style.display = 'none';
-    //     }
-    // }
-
-    // if (optionElement.includes('Surname')) {
-    //     if (studentSurname.includes(searchInput)) {
-    //         student.style.display = 'block';
-    //     } else {
-    //         student.style.display = 'none';
-    //     }
-    // }
-
-    // if (optionElement.includes('Age')) {
-    //     if (studentAge.includes(searchInput)) {
-    //         student.style.display = 'block';
-    //     } else {
-    //         student.style.display = 'none';
-    //     }
-    // }
-
-    // if (optionElement.includes('It-knowledge')) {
-    //     if (studentItKnowledge.includes(searchInput)) {
-    //         student.style.display = 'block';
-    //     } else {
-    //         student.style.display = 'none';
-    //     }
-    // }
-
-    // if (optionElement.includes('Group')) {
-    //     if (studentGroup.includes(searchInput)) {
-    //         student.style.display = 'block';
-    //     } else {
-    //         student.style.display = 'none';
-    //     }
-    // }
 
   });
 });
+
+// ANTRAS BUDAS
+
+function storeFormDataInLocalStorage2() {
+  let interests = [];
+  studentForm.addEventListener('input', (event) => {
+
+    let inputName = event.target.name;
+    let inputValue = event.target.value;
+
+    if (inputName === 'interest') {
+
+      if (interests.includes(inputValue)) {
+        // let filteredInterests = interests.filter (interest => {
+        //   return interest !== inputValue;
+        // });
+        let filteredInterests = interests.filter(interest => interest !== inputValue);
+        interests = filteredInterests;
+      } else {
+      interests.push(inputValue); 
+       }
+
+      let jsonInterests = JSON.stringify(interests);
+      localStorage.setItem(inputName, jsonInterests);
+
+    } else {
+      localStorage.setItem(inputName, inputValue);
+    }
+
+  });
+
+  studentForm.elements.name.value = localStorage.getItem('name');
+  studentForm.elements.surname.value = localStorage.getItem('surname');
+  studentForm.elements.age.value = localStorage.getItem('age');
+  studentForm.elements.phone.value = localStorage.getItem('phone');
+  studentForm.elements.email.value = localStorage.getItem('email');
+  studentForm.elements['it-knowledge'].value = localStorage.getItem('it-knowledge');
+  studentForm.elements.group.value = localStorage.getItem ('group');
+
+  let parsedInterests = JSON.parse(localStorage.getItem('interest'));
+
+  parsedInterests.map(interest => {
+    studentForm.querySelector(`input[value="${interest}"]`).checked = true;
+  });
+}
+// storeFormDataInLocalStorage2();
+
+function storeFormDataInLocalStorage3() {
+  studentForm.addEventListener('input', () => {
+
+    let formInterests = document.querySelectorAll('input[name="interest"]:checked');
+    let interestValues = [...formInterests].map (interest => {
+      return interest.value;
+    });
+
+  let studentFormData = {
+    name: studentForm.querySelector('#student-name').value,
+    surname: studentForm.querySelector('#student-surname').value,
+    age: studentForm.querySelector('#student-age').value,
+    phone: studentForm.querySelector('#student-phone').value,
+    email: studentForm.querySelector('#student-email').value,
+    itKnowledge: studentForm.querySelector('#student-it-knowledge').value,
+    group: studentForm.elements.group.value,
+    interests: interestValues,
+  };
+
+
+  localStorage.setItem('form-info', JSON.stringify(studentFormData));
+});
+
+  let parsedFormInfo = JSON.parse(localStorage.getItem('form-info'));
+
+  if (parsedFormInfo) {
+
+  studentForm.querySelector('#student-name').value = parsedFormInfo.name;
+  studentForm.querySelector('#student-surname').value = parsedFormInfo.surname;
+  studentForm.querySelector('#student-age').value = parsedFormInfo.age;
+  studentForm.querySelector('#student-phone').value = parsedFormInfo.phone;
+  studentForm.querySelector('#student-email').value = parsedFormInfo.email;
+  studentForm.querySelector('#student-it-knowledge').value = parsedFormInfo.itKnowledge;
+  studentForm.elements.group.value = parsedFormInfo.group;
+
+  parsedFormInfo.interests.map(interest => {
+  studentForm.querySelector(`input[value="${interest}"]`).checked = true;
+  });
+  }
+} 
+storeFormDataInLocalStorage3()
+
+itKnowledgeOutputReset ();
